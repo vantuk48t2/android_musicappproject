@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/txtTitlePlaylist"
+        android:text="SOME TITLE"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textColor="@android:color/black"/>
+
+    <ListView
+        android:id="@+id/lvPlaylist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtTitlePlaylist">
+        
+    </ListView>
+    
+    <TextView
+        android:id="@+id/txtMorePlaylist"
+        android:drawablePadding="10dp"
+        android:textSize="19sp"
+        android:text="Xem thêm playlist"
+        android:drawableLeft="@drawable/iconmoreplaylist"
+        android:layout_below="@id/lvPlaylist"
+        android:background="#c9c7c7"
+        android:paddingTop="10dp"
+        android:paddingLeft="5dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

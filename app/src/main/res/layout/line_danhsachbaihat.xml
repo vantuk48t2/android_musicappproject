@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:elevation="5dp">
+
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtDanhSachIndex"
+            android:text="1"
+            android:textSize="20sp"
+            android:layout_margin="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtTenBaiHatTrongDanhSach"
+            android:textSize="20sp"
+            android:text="Ten Bai Hat"
+            android:textColor="#000"
+            android:layout_toRightOf="@id/txtDanhSachIndex"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:maxWidth="250dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtTenCaSiTrongDanhSach"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#979797"
+            android:textSize="20sp"
+            android:text="Ca Si"
+            android:layout_toRightOf="@id/txtDanhSachIndex"
+            android:layout_below="@id/txtTenBaiHatTrongDanhSach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/imgLuotThichDanhSach"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/iconlove"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
