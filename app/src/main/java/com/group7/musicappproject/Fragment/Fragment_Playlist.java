@@ -1,5 +1,6 @@
 package com.group7.musicappproject.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,11 +9,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.group7.musicappproject.Activity.ListPlaylistActivity;
+import com.group7.musicappproject.Activity.ListSongActivity;
 import com.group7.musicappproject.Adapter.PlaylistAdapter;
 import com.group7.musicappproject.Model.Playlist;
 import com.group7.musicappproject.R;
@@ -42,6 +46,14 @@ public class Fragment_Playlist extends Fragment {
         txtMorePlaylist = view.findViewById(R.id.txtMorePlaylist);
 
         GetData();
+
+        txtMorePlaylist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ListPlaylistActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
@@ -55,6 +67,14 @@ public class Fragment_Playlist extends Fragment {
                 playlistAdapter = new PlaylistAdapter(getActivity(), android.R.layout.simple_list_item_1, arrayPlaylist);
                 lvPlaylist.setAdapter(playlistAdapter);
                 setListViewHeightBasedOnChildren(lvPlaylist);
+                lvPlaylist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(getActivity(), ListSongActivity.class);
+                        intent.putExtra("itemPlaylist", arrayPlaylist.get(position));
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override

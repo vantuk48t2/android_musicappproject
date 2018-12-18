@@ -1,5 +1,6 @@
 package com.group7.musicappproject.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.group7.musicappproject.Activity.ListChudeActivity;
+import com.group7.musicappproject.Activity.ListSongActivity;
 import com.group7.musicappproject.Model.ChuDe;
 import com.group7.musicappproject.Model.TheLoai;
 import com.group7.musicappproject.Model.TheLoaiToday;
@@ -39,7 +42,13 @@ public class Fragment_ChuDe_TheLoai_Today extends Fragment {
         view = inflater.inflate(R.layout.fragment_chude_theloai_today, container, false);
         horizontalScrollView = view.findViewById(R.id.horizontalSV);
         txtXemThemChuDeTheLoai = view.findViewById(R.id.txtXemThem);
-
+        txtXemThemChuDeTheLoai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ListChudeActivity.class);
+                startActivity(intent);
+            }
+        });
         GetData();
 
         return view;
@@ -91,6 +100,15 @@ public class Fragment_ChuDe_TheLoai_Today extends Fragment {
                     cardView.setLayoutParams(layoutParams);
                     cardView.addView(imageView);
                     linearLayout.addView(cardView);
+                    final int finalJ = j;
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), ListSongActivity.class);
+                            intent.putExtra("theLoai", theLoaiArrayList.get(finalJ));
+                            startActivity(intent);
+                        }
+                    });
                 }
 
                 horizontalScrollView.addView(linearLayout);

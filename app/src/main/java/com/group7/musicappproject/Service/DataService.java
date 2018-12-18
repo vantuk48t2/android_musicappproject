@@ -2,6 +2,7 @@ package com.group7.musicappproject.Service;
 
 import com.group7.musicappproject.Model.Album;
 import com.group7.musicappproject.Model.BaiHat;
+import com.group7.musicappproject.Model.ChuDe;
 import com.group7.musicappproject.Model.Playlist;
 import com.group7.musicappproject.Model.QuangCao;
 import com.group7.musicappproject.Model.TheLoaiToday;
@@ -34,4 +35,18 @@ public interface DataService {
     @FormUrlEncoded
     @POST("danhsachbaihat.php")
     Call<List<BaiHat>> getDanhSachBaiHatTheoQuangCao(@Field("idQuangCao") String idQuangCao);
+
+    @FormUrlEncoded
+    @POST("danhsachbaihat.php")
+    Call<List<BaiHat>> getDanhSachBaiHatTheoPlaylist(@Field("idPlaylist") String idPlaylist);
+
+    @GET("danhsachplaylist.php")
+    Call<List<Playlist>> getDanhSachPlaylist();
+
+    @FormUrlEncoded
+    @POST("danhsachbaihat.php")
+    Call<List<BaiHat>> getDanhSachBaiHatTheoTheLoai(@Field("idTheLoai") String idTheLoai);
+
+    @GET("danhsachchude.php")
+    Call<List<ChuDe>> getTatCaChuDe();
 }
