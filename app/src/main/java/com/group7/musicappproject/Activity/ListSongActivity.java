@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.group7.musicappproject.Adapter.DanhSachBaiHatAdapter;
+import com.group7.musicappproject.Model.Album;
 import com.group7.musicappproject.Model.BaiHat;
 import com.group7.musicappproject.Model.Playlist;
 import com.group7.musicappproject.Model.QuangCao;
@@ -49,6 +50,7 @@ public class ListSongActivity extends AppCompatActivity {
     ArrayList<BaiHat> baiHatArrayList;
     Playlist playlist;
     TheLoai theLoai;
+    Album album;
     DanhSachBaiHatAdapter adapter;
 
     @Override
@@ -62,7 +64,6 @@ public class ListSongActivity extends AppCompatActivity {
             setValueInView(quangCao.getTenbaihat(), quangCao.getHinhbaihat());
             GetDataBanner(quangCao.getIdQuangCao());
         }
-
         if (playlist != null && !playlist.getTen().equals("")) {
             setValueInView(playlist.getTen(), playlist.getHinhNen());
             GetDataPlaylist(playlist.getIdPlaylist());
@@ -71,6 +72,30 @@ public class ListSongActivity extends AppCompatActivity {
             setValueInView(theLoai.getTenTheLoai(), theLoai.getHinhTheLoai());
             GetDataTheLoai(theLoai.getIdTheLoai());
         }
+        if (album != null && !album.getTenAlbum().equals("")) {
+            setValueInView(album.getTenAlbum(), album.getHinhAlbum());
+            GetDatAlbum(album.getIdAlbum());
+        }
+
+
+    }
+
+    private void GetDatAlbum(String idAlbum) {
+        DataService dataService = APIService.getService();
+        Call<List<BaiHat>> callback = dataService.getDanhSachBaiHatTheoAlbum(idAlbum);
+        callback.enqueue(new Callback<List<BaiHat>>() {
+            @Override
+            public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
+                baiHatArrayList = (ArrayList<BaiHat>) response.body();
+                setAdapter();
+                event_click();
+            }
+
+            @Override
+            public void onFailure(Call<List<BaiHat>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void GetDataTheLoai(String idTheLoai) {
@@ -80,7 +105,8 @@ public class ListSongActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
                 baiHatArrayList = (ArrayList<BaiHat>) response.body();
-                Log.d("BBB", baiHatArrayList.get(0).getTenBaiHat());
+                setAdapter();
+                event_click();
             }
 
             @Override
@@ -97,9 +123,8 @@ public class ListSongActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
                 baiHatArrayList = (ArrayList<BaiHat>) response.body();
-                adapter = new DanhSachBaiHatAdapter(ListSongActivity.this, baiHatArrayList);
-                recyclerViewDanhSachBaiHat.setLayoutManager(new LinearLayoutManager(ListSongActivity.this));
-                recyclerViewDanhSachBaiHat.setAdapter(adapter);
+                setAdapter();
+                event_click();
             }
 
             @Override
@@ -133,9 +158,8 @@ public class ListSongActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
                 baiHatArrayList = (ArrayList<BaiHat>) response.body();
-                adapter = new DanhSachBaiHatAdapter(ListSongActivity.this, baiHatArrayList);
-                recyclerViewDanhSachBaiHat.setLayoutManager(new LinearLayoutManager(ListSongActivity.this));
-                recyclerViewDanhSachBaiHat.setAdapter(adapter);
+                setAdapter();
+                event_click();
             }
 
             @Override
@@ -143,6 +167,12 @@ public class ListSongActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void setAdapter() {
+        adapter = new DanhSachBaiHatAdapter(ListSongActivity.this, baiHatArrayList);
+        recyclerViewDanhSachBaiHat.setLayoutManager(new LinearLayoutManager(ListSongActivity.this));
+        recyclerViewDanhSachBaiHat.setAdapter(adapter);
     }
 
     private void init() {
@@ -156,6 +186,7 @@ public class ListSongActivity extends AppCompatActivity {
         });
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
+        floatingActionButton.setEnabled(false);
     }
 
     private void map() {
@@ -179,6 +210,21 @@ public class ListSongActivity extends AppCompatActivity {
             if (intent.hasExtra("theLoai")) {
                 theLoai = (TheLoai) intent.getSerializableExtra("theLoai");
             }
+            if (intent.hasExtra("album")) {
+                album = (Album) intent.getSerializableExtra("album");
+            }
         }
+    }
+
+    private void event_click() {
+        floatingActionButton.setEnabled(true);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListSongActivity.this, PlayActivity.class);
+                intent.putExtra("arrayBaiHat", baiHatArrayList);
+                startActivity(intent);
+            }
+        });
     }
 }

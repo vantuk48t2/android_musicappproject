@@ -1,5 +1,6 @@
 package com.group7.musicappproject.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.group7.musicappproject.Activity.ListAlbumActivity;
 import com.group7.musicappproject.Adapter.AlbumAdapter;
 import com.group7.musicappproject.Model.Album;
 import com.group7.musicappproject.R;
@@ -36,6 +38,13 @@ public class Fragment_Album extends Fragment {
         view = inflater.inflate(R.layout.fragment_album, container, false);
         recyclerViewAlbum = view.findViewById(R.id.reycleViewAlbum);
         txtAlbumXemThem = view.findViewById(R.id.txtAlbumXemThem);
+        txtAlbumXemThem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ListAlbumActivity.class);
+                startActivity(intent);
+            }
+        });
 
         GetData();
         

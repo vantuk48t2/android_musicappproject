@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         mainViewPagerAdapter.addFragment(new Fragment_Search(), "Tim Kiem");
         viewPager.setAdapter(mainViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.getTabAt(0).setIcon(R.drawable.icontrangchu);
-        tabLayout.getTabAt(1).setIcon(R.drawable.icontimkiem);
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_home_black_24dp);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_search_black_24dp);
     }
 
     private void map() {

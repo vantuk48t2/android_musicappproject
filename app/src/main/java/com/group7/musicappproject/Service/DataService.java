@@ -5,6 +5,7 @@ import com.group7.musicappproject.Model.BaiHat;
 import com.group7.musicappproject.Model.ChuDe;
 import com.group7.musicappproject.Model.Playlist;
 import com.group7.musicappproject.Model.QuangCao;
+import com.group7.musicappproject.Model.TheLoai;
 import com.group7.musicappproject.Model.TheLoaiToday;
 
 import java.util.List;
@@ -49,4 +50,19 @@ public interface DataService {
 
     @GET("danhsachchude.php")
     Call<List<ChuDe>> getTatCaChuDe();
+
+    @FormUrlEncoded
+    @POST("danhsachtheloaitrongchude.php")
+    Call<List<TheLoai>> getTheLoaiTheoChuDe(@Field("idChuDe") String idChuDe);
+
+    @GET("danhsachalbum.php")
+    Call<List<Album>> getTatCaAlbum();
+
+    @FormUrlEncoded
+    @POST("danhsachbaihat.php")
+    Call<List<BaiHat>> getDanhSachBaiHatTheoAlbum(@Field("idAlbum") String idAlbum);
+
+    @FormUrlEncoded
+    @POST("updateluotthich.php")
+    Call<String> updateLuotThich(@Field("luotThich") String luotThich, @Field("idBaiHat") String idBaiHat);
 }

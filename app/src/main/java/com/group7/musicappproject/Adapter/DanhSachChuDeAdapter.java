@@ -1,6 +1,7 @@
 package com.group7.musicappproject.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.group7.musicappproject.Activity.ListTheLoaiActivity;
 import com.group7.musicappproject.Model.ChuDe;
 import com.group7.musicappproject.R;
 import com.squareup.picasso.Picasso;
@@ -53,6 +55,14 @@ public class DanhSachChuDeAdapter extends RecyclerView.Adapter<DanhSachChuDeAdap
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imgHinhNen = itemView.findViewById(R.id.imgDanhSachChuDe);
+            imgHinhNen.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, ListTheLoaiActivity.class);
+                    intent.putExtra("chuDe", chuDeArrayList.get(getPosition()));
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

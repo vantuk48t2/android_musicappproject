@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:background="@drawable/custom_background_play"
+    tools:context=".Activity.PlayActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBarPlayNhac"
+        android:theme="@style/ToolbarThemeLight"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpagerPlay"
+        android:layout_weight="8"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+    </android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="00:00"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#ffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <SeekBar
+                android:id="@+id/seekBarSong"
+                android:layout_weight="9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtTotalTime"
+                android:gravity="center"
+                android:text="00:00"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_weight="0.5"
+                android:textColor="#ffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/btnSuffle"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/iconsuffle"
+                android:layout_marginRight="15dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <ImageButton
+                android:id="@+id/btnPrevious"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/iconpreview"
+                android:layout_marginRight="15dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
+            <ImageButton
+                android:id="@+id/btnPlay"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/iconplay"
+                android:layout_marginRight="15dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp" />
+
+            <ImageButton
+                android:id="@+id/btnNext"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/iconnext"
+                android:layout_marginRight="15dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
+            <ImageButton
+                android:id="@+id/btnRepeat"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/iconrepeat"
+                android:layout_marginRight="15dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

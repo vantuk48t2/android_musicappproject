@@ -20,7 +20,10 @@
         </activity>
         <activity android:name=".Activity.ListSongActivity" />
         <activity android:name=".Activity.ListPlaylistActivity" />
-        <activity android:name=".Activity.ListChudeActivity"></activity>
+        <activity android:name=".Activity.ListChudeActivity" />
+        <activity android:name=".Activity.ListTheLoaiActivity" />
+        <activity android:name=".Activity.ListAlbumActivity" />
+        <activity android:name=".Activity.PlayActivity"></activity>
     </application>
 
 </manifest>

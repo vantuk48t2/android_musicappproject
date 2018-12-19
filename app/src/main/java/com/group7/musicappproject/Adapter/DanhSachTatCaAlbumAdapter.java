@@ -17,11 +17,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> {
+public class DanhSachTatCaAlbumAdapter extends RecyclerView.Adapter<DanhSachTatCaAlbumAdapter.ViewHolder> {
+
     Context context;
     ArrayList<Album> albumArrayList;
 
-    public AlbumAdapter(Context context, ArrayList<Album> albumArrayList) {
+    public DanhSachTatCaAlbumAdapter(Context context, ArrayList<Album> albumArrayList) {
         this.context = context;
         this.albumArrayList = albumArrayList;
     }
@@ -30,7 +31,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.line_album, viewGroup, false);
+        View view = inflater.inflate(R.layout.line_tatcaalbum, viewGroup, false);
 
         return new ViewHolder(view);
     }
@@ -38,11 +39,9 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Album album = albumArrayList.get(i);
-        viewHolder.txtTenCasi.setText(album.getTenCaSiAlbum());
+        Picasso.with(context).load(album.getHinhAlbum()).into(viewHolder.imgHinh);
         viewHolder.txtTenAlbum.setText(album.getTenAlbum());
-        Picasso.with(context)
-                .load(album.getHinhAlbum())
-                .into(viewHolder.imgAlbum);
+        viewHolder.txtTenCaSi.setText(album.getTenCaSiAlbum());
     }
 
     @Override
@@ -51,14 +50,14 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgAlbum;
-        TextView txtTenAlbum, txtTenCasi;
+        ImageView imgHinh;
+        TextView txtTenAlbum, txtTenCaSi;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgAlbum = itemView.findViewById(R.id.imgAlbum);
-            txtTenAlbum = itemView.findViewById(R.id.txtLineTitleAlbum);
-            txtTenCasi = itemView.findViewById(R.id.txtLineTenCasiAlbum);
+            imgHinh = itemView.findViewById(R.id.imgTatCaAlbum);
+            txtTenAlbum = itemView.findViewById(R.id.txtTenAlbum);
+            txtTenCaSi = itemView.findViewById(R.id.txtTenCaSiAllAlbum);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

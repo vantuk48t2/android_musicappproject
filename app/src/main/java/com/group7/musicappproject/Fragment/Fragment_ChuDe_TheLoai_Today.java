@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.group7.musicappproject.Activity.ListChudeActivity;
 import com.group7.musicappproject.Activity.ListSongActivity;
+import com.group7.musicappproject.Activity.ListTheLoaiActivity;
 import com.group7.musicappproject.Model.ChuDe;
 import com.group7.musicappproject.Model.TheLoai;
 import com.group7.musicappproject.Model.TheLoaiToday;
@@ -85,6 +86,15 @@ public class Fragment_ChuDe_TheLoai_Today extends Fragment {
                     cardView.setLayoutParams(layoutParams);
                     cardView.addView(imageView);
                     linearLayout.addView(cardView);
+                    final int finalI = i;
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), ListTheLoaiActivity.class);
+                            intent.putExtra("chuDe", chuDeArrayList.get(finalI));
+                            startActivity(intent);
+                        }
+                    });
                 }
 
                 for (int j = 0; j < chuDeArrayList.size(); j++) {
